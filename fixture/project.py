@@ -1,3 +1,5 @@
+import string
+import random
 from selenium.webdriver.support.ui import Select
 
 from model.project import Project
@@ -12,6 +14,14 @@ class ProjectHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("Manage").click()
         wd.find_element_by_link_text("Manage Projects").click()
+
+    def delete_project(self, project):
+        wd = self.app.wd
+        self.open_projects_page()
+        wd.find_element_by_link_text("{}".format(project.name)).click()
+        wd.find_element_by_xpath("//input[@value='Delete Project']").click()
+        wd.find_element_by_xpath("//input[@value='Delete Project']").click()
+
 
     def fill_project_info(self, project):
         wd = self.app.wd
@@ -42,6 +52,11 @@ class ProjectHelper:
         wd.find_element_by_css_selector("input[value='Create New Project'").click()
         self.fill_project_info(project)
         wd.find_element_by_css_selector("input[value='Add Project'").click()
+
+    @staticmethod
+    def random_name(maxlen):
+        symbols = string.ascii_letters + string.digits
+        return "".join([random.choice(symbols) for i in range(maxlen)])
 
     @staticmethod
     def get_status(status):

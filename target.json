@@ -1,10 +1,10 @@
 {
   "web": {
-    "baseUrl": "http://localhost/mantisbt"
+    "baseUrl": "http://localhost/mantisbt/"
   },
   "webadmin": {
     "user": "administrator",
-    "usrPass": "root"
+    "password": "root"
   },
   "db": {
     "host": "localhost",
